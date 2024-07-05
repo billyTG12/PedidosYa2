@@ -4,12 +4,17 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_marginTop="10dp"
+    android:background="@drawable/rounded_listview_background"
+    android:layout_marginBottom="7dp"
+
+    android:layout_margin="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="5sp"
         android:layout_marginBottom="8dp">
         <TextView
             android:id="@+id/textNombreLabel"
@@ -22,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/ContentTextView"
-
+            android:textColor="@color/colorInputText"
             android:text="Nombre del Usuario"
             android:textSize="16sp" />
     </LinearLayout>
@@ -32,7 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="5sp"
         android:layout_marginBottom="4dp">
+
         <TextView
             android:id="@+id/textEmailLabel"
             style="@style/ContentLabelTextView"
@@ -45,6 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email del Usuario"
+        android:textColor="@color/colorInputText"
         style="@style/ContentTextView" />
 
 </LinearLayout>
@@ -53,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="5sp"
         android:layout_marginBottom="16dp">
         <TextView
             android:id="@+id/textUbicacionLabel"
@@ -65,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Dirección"
+        android:textColor="@color/colorInputText"
         style="@style/ContentTextView" />
     </LinearLayout>
 
@@ -72,6 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="5sp"
         android:layout_marginBottom="4dp">
         <TextView
             android:id="@+id/textMetodoPagoLabel"
@@ -85,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Método de Pago"
+        android:textColor="@color/colorInputText"
         style="@style/ContentTextView" />
     </LinearLayout>
 
@@ -92,6 +104,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="5sp"
         android:layout_marginBottom="4dp">
         <TextView
             android:id="@+id/textTotalLabel"
@@ -104,6 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total"
+        android:textColor="@color/colorInputText"
         style="@style/ContentTextView" />
     </LinearLayout>
 
@@ -112,6 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="5sp"
         android:layout_marginBottom="16dp">
 
         <TextView
@@ -125,6 +140,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Atendido"
+        android:textColor="@color/colorInputText"
         style="@style/ContentTextView" />
 
     </LinearLayout>
@@ -132,6 +148,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_margin="5sp"
         android:layout_marginBottom="16dp">
 
         <TextView
@@ -139,7 +156,7 @@
             style="@style/ContentLabelTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Productosa e entregar: ">
+            android:text="Productosa a entregar: ">
 
         </TextView>
 
@@ -148,6 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Atendido"
+        android:textColor="@color/colorInputText"
         style="@style/ContentTextView" />
     </LinearLayout>
 </LinearLayout>

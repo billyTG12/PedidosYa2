@@ -41,6 +41,7 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
     private List<Producto> productosEnCarrito;
     private String userId;
     private DatabaseReference mDatabase;
+    private AdaptadorProductosCarrito adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +70,7 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
         productosEnCarrito = CarritoCompras.getInstance().getProductos();
 
         RecyclerView recyclerView = findViewById(R.id.recyclerViewProductos);
-
-        AdaptadorProductosCarrito adaptador = new AdaptadorProductosCarrito(this, productosEnCarrito);
+        adaptador = new AdaptadorProductosCarrito(this, productosEnCarrito);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adaptador);
 
@@ -99,12 +99,10 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
                 finish();
                 return true;
             } else if (itemId == R.id.navigation_fav) {
-                // Acción para favoritos
                 Intent favoritosIntent = new Intent(ConfirmarPedidoActivity.this, FavoritosActivity.class);
                 startActivity(favoritosIntent);
                 return true;
             } else if (itemId == R.id.navigation_car) {
-                // Acción para carrito
                 Intent carritoIntent = new Intent(ConfirmarPedidoActivity.this, CarritoActivity.class);
                 startActivity(carritoIntent);
                 return true;
@@ -201,6 +199,12 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
         mDatabase.child("Pedidos").child(pedidoId).setValue(pedidoMap)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(ConfirmarPedidoActivity.this, "Pedido guardado en Firebase", Toast.LENGTH_SHORT).show();
+
+                    // Vaciar el carrito y notificar al adaptador
+                    CarritoCompras.getInstance().vaciarCarrito();
+                    adaptador.notifyDataSetChanged();
+
+                    // Redirigir a la actividad CategoriaActivity
                     Intent intent = new Intent(ConfirmarPedidoActivity.this, CategoriaActivity.class);
                     startActivity(intent);
                     finish();

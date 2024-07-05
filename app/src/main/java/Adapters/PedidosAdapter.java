@@ -37,7 +37,7 @@ public class PedidosAdapter extends RecyclerView.Adapter<PedidosAdapter.PedidoVi
         holder.pedidoDireccion.setText( pedido.getDireccion());
         holder.pedidoMetodoPago.setText(pedido.getMetodoPago());
         holder.pedidoTotal.setText("$" + pedido.getTotal());
-        holder.pedidoAtendido.setText((pedido.isAtendido() ? "Sí" : "No"));
+        holder.pedidoAtendido.setText((pedido.isAtendido() ? "Atendido" : "No Atendido"));
 
         // Mostrar los platos si existen
         if (pedido.getPlatos() != null && !pedido.getPlatos().isEmpty()) {

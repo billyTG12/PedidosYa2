@@ -4,22 +4,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pedidosya2.entidades.Pedido;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+
+import Adapters.PedidoAdapter;
 
 
 public class DeliveryHomeActivity extends AppCompatActivity {
@@ -47,6 +39,17 @@ public class DeliveryHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_home);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+        if (!isLoggedIn) {
+            // Si el usuario no está logueado, ir a la pantalla de inicio de sesión
+            Intent intent = new Intent(DeliveryHomeActivity.this, LoginActivity1.class);
+            startActivity(intent);
+            finish();
+            return; // Salir del método para no continuar con la inicialización
+        }
 
         // Inicializar Firebase Database
         mDatabase = FirebaseDatabase.getInstance().getReference();

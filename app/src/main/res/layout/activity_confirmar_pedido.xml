@@ -21,18 +21,21 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+
         android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#9FFFFFFF"
+            android:layout_marginRight="5sp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="#BECFDF"
+                android:background="#ADEAECEF"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp">
 
@@ -46,6 +49,7 @@
                     android:id="@+id/ubicacionTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/border"
                     android:textSize="18sp"
                     android:visibility="gone"
                     android:layout_marginBottom="8dp"/>
@@ -55,13 +59,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
-                android:background="#BECFDF"
+
                 android:orientation="horizontal"
                 android:layout_marginTop="16dp">
 
                 <Button
                     android:id="@+id/seleccionar_metodo_pago"
-                    android:layout_width="wrap_content"
+                    android:layout_width="149dp"
                     android:layout_height="wrap_content"
                     android:text="Elija Método de Pago" />
 
@@ -112,11 +116,23 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="16dp"/>
 
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+
+                    android:text="Productos agregados"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerViewProductos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="3sp"
                     android:background="@drawable/border" />
             </LinearLayout>
         </LinearLayout>

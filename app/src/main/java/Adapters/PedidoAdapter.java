@@ -1,4 +1,4 @@
-package com.example.pedidosya2;
+package Adapters;
 
 
 import android.content.Context;
@@ -10,14 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.DiffUtil;
 
+import com.example.pedidosya2.HistorialPedidosActivity;
+import com.example.pedidosya2.MapaEntregaActivity;
+import com.example.pedidosya2.R;
 import com.example.pedidosya2.entidades.Pedido;
-import com.example.pedidosya2.entidades.Producto;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -106,12 +106,12 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
 
         // Verificar que el pedido no sea nulo
         if (pedido != null) {
-            textUbicacion.setText("Ubicación: " + pedido.getDireccion());
-            textMetodoPago.setText("Método de pago: " + pedido.getMetodoPago());
-            textTotal.setText("Total: $" + pedido.getTotal());
-            textNombre.setText("Nombre: " + pedido.getNombreUsuario());
-            textEmail.setText("Email: " + pedido.getEmailUsuario());
-            textAtendido.setText("Atendido: " + (pedido.isAtendido() ? "Sí" : "No"));
+            textUbicacion.setText(pedido.getDireccion());
+            textMetodoPago.setText(pedido.getMetodoPago());
+            textTotal.setText("$" + pedido.getTotal());
+            textNombre.setText(pedido.getNombreUsuario());
+            textEmail.setText(pedido.getEmailUsuario());
+            textAtendido.setText((pedido.isAtendido() ? "Atendido" : "No Atendido"));
 
             // Mostrar los productos si existen
             if (pedido.getPlatos() != null && !pedido.getPlatos().isEmpty()) {

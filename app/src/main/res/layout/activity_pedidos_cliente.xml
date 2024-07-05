@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -12,19 +13,17 @@
         android:background="#2A0A7E"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="mis pedidos" />
+        app:title="mis pedidos pendientes" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewPedidos"
         android:layout_width="match_parent"
 
-        android:background="@drawable/rounded_listview_background"
-        android:divider="@drawable/list_divider1"
-        android:layout_height="0dp"
+        android:layout_height="397dp"
+        android:layout_marginRight="5dp"
         android:layout_weight="1"
-        android:dividerHeight="8dp"
-
-        android:layout_marginRight="5dp" />
+        android:background="#CBEFE9E9"
+ />
 
     <Button
         android:id="@+id/btnHistorialPedidos"

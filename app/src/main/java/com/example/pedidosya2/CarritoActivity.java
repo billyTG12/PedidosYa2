@@ -1,10 +1,13 @@
 package com.example.pedidosya2;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,12 +25,15 @@ import Adapters.AdaptadorProductos;
 
 public class CarritoActivity extends AppCompatActivity {
 
-    private String nameUser, emailUser, usernameUser;
+    private String nameUser, emailUser, usernameUser, userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
+        userId = sharedPreferences.getString("userID", "");
 
         // Recibir los datos del intent
         Intent intent = getIntent();
@@ -50,6 +56,12 @@ public class CarritoActivity extends AppCompatActivity {
 
         Button btnIrAPagar = findViewById(R.id.btnIrAPagar);
         btnIrAPagar.setOnClickListener(v -> {
+            if (carrito.isEmpty()) {
+                Toast.makeText(CarritoActivity.this, "El carrito está vacío", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+
             Intent intent1 = new Intent(CarritoActivity.this, ConfirmarPedidoActivity.class);
 
             ArrayList<String> productos = new ArrayList<>();
@@ -75,10 +87,9 @@ public class CarritoActivity extends AppCompatActivity {
                 startActivity(categoriaIntent);
                 return true;
             } else if (itemId == R.id.navigation_pedidos) {
+                String userId = sharedPreferences.getString("userID", "");
                 Intent pedidosIntent = new Intent(CarritoActivity.this, PedidosClienteActivity.class);
-                pedidosIntent.putExtra("name", nameUser);
-                pedidosIntent.putExtra("email", emailUser);
-                pedidosIntent.putExtra("username", usernameUser);
+                pedidosIntent.putExtra("userId", userId); // Asegúrate de obtener el userId correctamente
                 startActivity(pedidosIntent);
                 return true;
             } else if (itemId == R.id.navigation_perfil) {

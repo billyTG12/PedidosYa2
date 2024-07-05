@@ -30,6 +30,7 @@ public class FavoritosActivity extends AppCompatActivity {
     private AdaptadorProductos adaptadorProductos;
     private List<Producto> productosFavoritos;
     private String userId;
+    private String nameUser, emailUser, usernameUser;
 
     private DatabaseReference favoritosDatabaseReference;
 
@@ -40,6 +41,12 @@ public class FavoritosActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
         userId = sharedPreferences.getString("userID", "");
+
+        Intent intent = getIntent();
+        nameUser = intent.getStringExtra("name");
+        emailUser = intent.getStringExtra("email");
+        usernameUser = intent.getStringExtra("username");
+
 
         recyclerView = findViewById(R.id.recyclerViewFavoritos);
         productosFavoritos = new ArrayList<>();
@@ -59,7 +66,11 @@ public class FavoritosActivity extends AppCompatActivity {
                 startActivity(new Intent(FavoritosActivity.this, CategoriaActivity.class));
                 return true;
             } else if (itemId == R.id.navigation_pedidos) {
-                startActivity(new Intent(FavoritosActivity.this, PedidosClienteActivity.class));
+
+                String userId = sharedPreferences.getString("userID", "");
+                Intent pedidosIntent = new Intent(FavoritosActivity.this, PedidosClienteActivity.class);
+                pedidosIntent.putExtra("userId", userId); // Asegúrate de obtener el userId correctamente
+                startActivity(pedidosIntent);
                 return true;
             } else if (itemId == R.id.navigation_perfil) {
                 startActivity(new Intent(FavoritosActivity.this, ProfileActivity.class));

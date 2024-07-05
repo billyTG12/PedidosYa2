@@ -28,6 +28,18 @@ public class LoginDeliveryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_delivery);
 
+
+        SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+        if (isLoggedIn) {
+            // Si el usuario está logueado, ir a la pantalla principal
+            Intent intent = new Intent(LoginDeliveryActivity.this, DeliveryHomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+
         workerUsername = findViewById(R.id.login_username_delivery);
         workerPassword = findViewById(R.id.login_password_delivery);
         workerLoginButton = findViewById(R.id.login_button_delivery);
@@ -86,6 +98,12 @@ public class LoginDeliveryActivity extends AppCompatActivity {
                         if (passwordObj instanceof String) {
                             String passwordFromDB = (String) passwordObj;
                             if (passwordFromDB.equals(workerPasswordValue)) {
+
+                                SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putBoolean("isLoggedIn", true);
+                                editor.apply();
+
                                 Intent intent = new Intent(LoginDeliveryActivity.this, DeliveryHomeActivity.class);
                                 startActivity(intent);
                                 finish();

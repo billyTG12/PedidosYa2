@@ -37,6 +37,7 @@ public class PedidosClienteActivity extends AppCompatActivity {
 
     private static final String TAG = "PedidosClienteActivity";
     private RecyclerView recyclerViewPedidos;
+
     private PedidosAdapter pedidosAdapter;
     private List<Pedido> pedidosList;
     private DatabaseReference mDatabase;
@@ -49,7 +50,7 @@ public class PedidosClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pedidos_cliente);
 
         // Obtener datos del usuario
-        SharedPreferences sharedPreferences = getSharedPreferences("userData", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("userPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("name", "");
 
         Intent intent = getIntent();

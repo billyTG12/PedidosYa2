@@ -17,6 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import Adapters.PedidoAdapter;
+
 public class HistorialPedidosActivity extends AppCompatActivity {
 
     private static final String TAG = "HistorialPedidosActivity";
