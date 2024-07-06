@@ -54,12 +54,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
-                android:background="@drawable/btn_round_primary_bg"
-                android:backgroundTint="#801C1C"
-                android:padding="5dp"
-                android:shadowColor="#C85050"
-                android:text="Agregar al Carrito"
 
+
+                android:backgroundTint="@color/black"
+
+                android:padding="5dp"
+
+                android:text="Agregar al Carrito"
                 android:textColorLink="#8C4848"
                 app:strokeColor="#2E0F0F" />
             <TextView

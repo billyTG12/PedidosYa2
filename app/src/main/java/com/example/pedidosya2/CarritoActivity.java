@@ -74,7 +74,6 @@ public class CarritoActivity extends AppCompatActivity {
             startActivity(intent1);
         });
 
-        // Configurar BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             int itemId = item.getItemId();
@@ -100,12 +99,12 @@ public class CarritoActivity extends AppCompatActivity {
                 startActivity(perfilIntent);
                 return true;
             } else if (itemId == R.id.navigation_fav) {
-                // Acción para favoritos
+
                 Intent favoritosIntent = new Intent(CarritoActivity.this, FavoritosActivity.class);
                 startActivity(favoritosIntent);
                 return true;
             }else if (itemId == R.id.navigation_car) {
-                // Acción para favoritos
+
 
                 return true;
             }

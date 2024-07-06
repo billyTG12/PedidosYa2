@@ -145,13 +145,12 @@ public class PedidoAdapter extends ArrayAdapter<Pedido> {
         return convertView;
     }
 
-    // Método updateData() para actualizar la lista de pedidos (como lo tenías antes)
-    public void updateData(List<Pedido> newData) {
-        mPedidos.clear();  // Limpiar la lista actual
+     public void updateData(List<Pedido> newData) {
+        mPedidos.clear();
         if (newData != null) {
-            mPedidos.addAll(newData);  // Agregar la nueva lista de pedidos
+            mPedidos.addAll(newData);
         }
         Log.d(TAG, "Datos actualizados: " + mPedidos.size());
-        notifyDataSetChanged();  // Notificar cambios a la vista
+        notifyDataSetChanged();
     }
 }

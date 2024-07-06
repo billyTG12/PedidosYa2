@@ -139,7 +139,7 @@ public class ProfileActivity extends AppCompatActivity {
                         profileName.setText(nameFromDB);
                         profileEmail.setText(emailFromDB);
                         profileUsername.setText(usernameFromDB);
-                        profilePassword.setText(passwordFromDB);
+                       // profilePassword.setText(passwordFromDB);
 
                         // Cargar la imagen usando Picasso
                         if (profileImageUrl != null && !profileImageUrl.isEmpty()) {
@@ -196,7 +196,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void cerrarSesion() {
         // Cerrar sesión en Firebase Authentication
-        FirebaseAuth.getInstance().signOut();
+       // FirebaseAuth.getInstance().signOut();
 
         // Limpiar datos de SharedPreferences (si es necesario)
         SharedPreferences sharedPreferences = getSharedPreferences("userPrefs", MODE_PRIVATE);

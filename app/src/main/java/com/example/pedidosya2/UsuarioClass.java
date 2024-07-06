@@ -8,7 +8,7 @@ public class UsuarioClass {
     private String profileImageUrl;
 
     public UsuarioClass() {
-        // Constructor vacío requerido por Firebase
+
     }
 
     public UsuarioClass(String id, String name, String email, String username, String password, String profileImageUrl) {

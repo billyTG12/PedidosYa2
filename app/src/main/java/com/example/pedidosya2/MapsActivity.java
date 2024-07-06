@@ -54,7 +54,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Mover la cámara y establecer el nivel de zoom
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(cajamarca, zoomLevel));
 
-        // Agregar un marcador en la ciudad de Cajamarca
+
         mMap.addMarker(new MarkerOptions()
                 .position(cajamarca)
                 .title("Cajamarca"));
@@ -69,15 +69,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Verificar si la ubicación seleccionada está dentro de los límites
         if (latLng.latitude >= cajamarcaBoundsSW.latitude && latLng.latitude <= cajamarcaBoundsNE.latitude &&
                 latLng.longitude >= cajamarcaBoundsSW.longitude && latLng.longitude <= cajamarcaBoundsNE.longitude) {
-            // La ubicación está dentro de los límites de Cajamarca, puedes proceder con la acción deseada
-            // Por ejemplo, añadir un marcador en la ubicación seleccionada
-            mMap.clear(); // Borrar los marcadores anteriores
+           mMap.clear();
             mMap.addMarker(new MarkerOptions().position(latLng).title("Ubicación seleccionada"));
 
-            // Convierte las coordenadas en dirección
             String direccion = obtenerDireccion(latLng.latitude, latLng.longitude);
 
-            // Muestra un mensaje de confirmación con la dirección
             Toast.makeText(this, "Ubicación guardada: " + direccion, Toast.LENGTH_SHORT).show();
 
             // Devuelve la ubicación seleccionada a ConfirmarPedidoActivity

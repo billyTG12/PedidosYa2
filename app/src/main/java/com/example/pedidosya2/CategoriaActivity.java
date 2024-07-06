@@ -145,13 +145,11 @@ public class CategoriaActivity extends AppCompatActivity {
     }
 
     private void cargarDatos() {
-        // Verificar la conexión a Internet
+
         if (disponibilidadDeRed()) {
-            // Si hay conexión a Internet, carga los datos desde Retrofit y almacena en Firebase
-            cargarDatosDesdeRetrofit();
+           cargarDatosDesdeRetrofit();
         } else {
-            // Si no hay conexión a Internet, carga los datos desde Firebase
-            cardgarDatosDesdeFirebase();
+            cargarDatosDesdeFirebase();
         }
     }
 
@@ -184,19 +182,19 @@ public class CategoriaActivity extends AppCompatActivity {
                     almacenarDatosEnFirebase(mCategorias);  // Almacenar datos en Firebase
                 } else {
                     Log.e("CategoriaActivity", "Error: Respuesta no exitosa - Código " + response.code());
-                    cardgarDatosDesdeFirebase();  // Cargar datos desde Firebase
+                    cargarDatosDesdeFirebase();  // Cargar datos desde Firebase
                 }
             }
 
             @Override
             public void onFailure(Call<List<Categoria>> call, Throwable t) {
                 Log.e("CategoriaActivity", "Error: " + t.getMessage());
-                cardgarDatosDesdeFirebase();  // Cargar datos desde Firebase
+                cargarDatosDesdeFirebase();  // Cargar datos desde Firebase
             }
         });
     }
 
-    private void cardgarDatosDesdeFirebase() {
+    private void cargarDatosDesdeFirebase() {
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -21,6 +21,11 @@ public class AdaptadorRestaurantes extends RecyclerView.Adapter<AdaptadorRestaur
     private Context mContext;
     private List<Restaurante> mRestaurantes;
     private OnItemClickListener mListener;
+    private String direccionRestaurante;
+
+    public void setDireccionRestaurante(String direccion) {
+        direccionRestaurante = direccion;
+    }
 
     public interface OnItemClickListener {
         void onItemClick(int position, String restauranteNombre);

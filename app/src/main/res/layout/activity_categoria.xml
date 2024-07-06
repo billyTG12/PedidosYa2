@@ -14,7 +14,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2A0A7E"
+        android:background="#7DDB81"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:title="Categorias">
@@ -23,8 +23,10 @@
             android:id="@+id/profileButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ver Perfil"
-            android:layout_marginLeft="170sp" />
+            android:layout_marginLeft="170sp"
+
+            android:backgroundTint="#0E0F0E"
+            android:text="Ver Perfil" />
 
         <TextView
             android:id="@+id/idTvUser"
@@ -47,7 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@color/color_borde_gris"
+        android:background="@color/black"
         android:backgroundTint="#201F2722"
         android:divider="@color/white"
         android:dividerHeight="1dp"

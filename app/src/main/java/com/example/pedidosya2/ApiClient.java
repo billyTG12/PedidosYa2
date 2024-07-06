@@ -1,6 +1,6 @@
 package com.example.pedidosya2;
 
-import com.example.pedidosya2.UserService;
+//import com.example.pedidosya2.UserService;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -26,10 +26,12 @@ public class ApiClient {
         return retrofit;
 
     }
-
+/*
     public static UserService getService(){
         UserService userService = getRetrofit().create(UserService.class);
 
         return userService;
     }
+    /*
+ */
 }

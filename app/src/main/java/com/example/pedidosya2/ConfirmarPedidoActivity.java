@@ -2,6 +2,7 @@ package com.example.pedidosya2;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -48,21 +49,27 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmar_pedido);
 
+           SharedPreferences restaurantePrefs = getSharedPreferences("restaurantePrefs", Context.MODE_PRIVATE);
+        String direccionRestaurante = restaurantePrefs.getString("restaurante_direccion", "");
+        ubicacionTextView = findViewById(R.id.ubicacionTextView);
+        ubicacionTextView.setText("Ubicación seleccionada: " + direccionRestaurante);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        ubicacionTextView = findViewById(R.id.ubicacionTextView);
         metodoPagoTextView = findViewById(R.id.metodoPagoTextView);
         totalTextView = findViewById(R.id.totalTextView);
         nameTextView = findViewById(R.id.nameTextView);
         emailTextView = findViewById(R.id.emailTextView);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("userPrefs", MODE_PRIVATE);
-        String name = sharedPreferences.getString("name", "");
-        String email = sharedPreferences.getString("email", "");
-        userId = sharedPreferences.getString("userID", "");
+        // Aquí recuperas los datos del usuario de SharedPreferences
+        SharedPreferences userPrefs = getSharedPreferences("userPrefs", MODE_PRIVATE);
+        String name = userPrefs.getString("name", "");
+        String email = userPrefs.getString("email", "");
+        userId = userPrefs.getString("userID", "");
 
         nameTextView.setText("Nombre: " + name);
         emailTextView.setText("Email: " + email);
+
         Intent intent = getIntent();
         double total = intent.getDoubleExtra("total", 0.0);
         totalTextView.setText("Total: $" + String.format("%.2f", total));
@@ -176,10 +183,9 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
             return;
         }
 
-        // Crear un mapa con los datos del pedido
-        Map<String, Object> pedidoMap = new HashMap<>();
-        pedidoMap.put("id", pedidoId); // Agregar el ID al mapa
-        pedidoMap.put("userId", userId); // Guardar el ID del usuario
+         Map<String, Object> pedidoMap = new HashMap<>();
+        pedidoMap.put("id", pedidoId);
+        pedidoMap.put("userId", userId);
         pedidoMap.put("direccion", direccion);
         pedidoMap.put("metodoPago", metodoPago);
         pedidoMap.put("total", total);
@@ -187,25 +193,21 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
         pedidoMap.put("nombreUsuario", nombreUsuario);
         pedidoMap.put("emailUsuario", emailUsuario);
 
-        // Agregar los productos al mapa del pedido
-        Map<String, Object> productosMap = new HashMap<>();
+         Map<String, Object> productosMap = new HashMap<>();
         for (Producto producto : productosEnCarrito) {
             String sanitizedKey = sanitizeKey(producto.getNombre());
             productosMap.put(sanitizedKey, producto.getCantidad());
         }
         pedidoMap.put("platos", productosMap);
 
-        // Guardar el pedido en la base de datos de Firebase
         mDatabase.child("Pedidos").child(pedidoId).setValue(pedidoMap)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(ConfirmarPedidoActivity.this, "Pedido guardado en Firebase", Toast.LENGTH_SHORT).show();
 
-                    // Vaciar el carrito y notificar al adaptador
                     CarritoCompras.getInstance().vaciarCarrito();
                     adaptador.notifyDataSetChanged();
 
-                    // Redirigir a la actividad CategoriaActivity
-                    Intent intent = new Intent(ConfirmarPedidoActivity.this, CategoriaActivity.class);
+                     Intent intent = new Intent(ConfirmarPedidoActivity.this, CategoriaActivity.class);
                     startActivity(intent);
                     finish();
                 })
@@ -225,12 +227,10 @@ public class ConfirmarPedidoActivity extends AppCompatActivity {
     }
 
     private void verPedidosCliente() {
-        // Obtener el ID del usuario desde SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("userPrefs", MODE_PRIVATE);
         String userId = sharedPreferences.getString("userID", "");
 
-        // Redirigir a la actividad para mostrar los pedidos del cliente
-        Intent intent = new Intent(ConfirmarPedidoActivity.this, PedidosClienteActivity.class);
+         Intent intent = new Intent(ConfirmarPedidoActivity.this, PedidosClienteActivity.class);
         intent.putExtra("userId", userId);
         startActivity(intent);
     }

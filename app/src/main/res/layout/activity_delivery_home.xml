@@ -32,7 +32,9 @@
         android:layout_weight="1"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:padding="8dp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
+        android:padding="3sp"
         android:background="@drawable/rounded_listview_background"
         android:divider="@drawable/list_divider1"
         android:dividerHeight="8dp" />

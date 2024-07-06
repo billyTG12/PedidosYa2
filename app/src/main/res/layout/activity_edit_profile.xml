@@ -80,6 +80,7 @@
 
                 android:layout_marginTop="40dp"
                 android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/ic_name"
                 android:hint="Name"
 
                 android:padding="8dp"
@@ -89,7 +90,7 @@
                 android:id="@+id/editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-
+                android:drawableLeft="@drawable/ic_email"
                 android:layout_marginTop="20dp"
                 android:drawablePadding="8dp"
                 android:hint="Email"
@@ -105,7 +106,7 @@
                 android:layout_marginTop="20dp"
                 android:drawablePadding="8dp"
                 android:hint="Username"
-
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:padding="8dp"
                 android:textColor="@color/black" />
 
@@ -115,7 +116,7 @@
                 android:layout_height="50dp"
 
                 android:layout_marginTop="20dp"
-                android:drawableLeft="@drawable/ic_baseline_lock_24"
+                android:drawableLeft="@drawable/ic_pasword"
                 android:drawablePadding="8dp"
                 android:hint="Password"
                 android:inputType="textPassword"
@@ -127,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/lavender"
+                android:backgroundTint="@color/black"
                 android:text="Guardar Cambios"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />

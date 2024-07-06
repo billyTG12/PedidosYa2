@@ -13,7 +13,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#2A0A7E"
+        android:background="#7DDB81"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="Detalles de compra" />
 
@@ -43,6 +43,7 @@
                     android:id="@+id/elegir_ubicacion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
                     android:text="Elegir Ubicación" />
 
                 <TextView
@@ -66,6 +67,7 @@
                 <Button
                     android:id="@+id/seleccionar_metodo_pago"
                     android:layout_width="149dp"
+                    android:backgroundTint="@color/black"
                     android:layout_height="wrap_content"
                     android:text="Elija Método de Pago" />
 
@@ -149,6 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:backgroundTint="@color/black"
             android:layout_marginBottom="8dp"
             android:text="Finalizar Compra" />
 

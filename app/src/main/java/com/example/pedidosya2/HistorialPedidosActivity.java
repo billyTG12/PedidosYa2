@@ -52,16 +52,16 @@ public class HistorialPedidosActivity extends AppCompatActivity {
         pedidosRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                listaPedidos.clear(); // Limpiar la lista antes de agregar nuevos pedidos
+                listaPedidos.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Pedido pedido = snapshot.getValue(Pedido.class);
-                    if (pedido != null && pedido.isAtendido()) { // Filtrar solo los pedidos atendidos
+                    if (pedido != null && pedido.isAtendido()) {
                         listaPedidos.add(pedido);
                     }
                 }
 
-                adapter.notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado
+                adapter.notifyDataSetChanged();
             }
 
             @Override

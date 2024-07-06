@@ -195,7 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="password"
+                android:text="******"
                 android:textAlignment="viewEnd"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -216,6 +216,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Edit Profile"
+            android:backgroundTint="@color/black"
             android:textSize="14sp"
             app:cornerRadius="20dp" />
 
@@ -224,6 +225,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:backgroundTint="@color/black"
             android:gravity="center"
             android:text="Cerrar sesión"
             android:textSize="18sp"

@@ -44,25 +44,21 @@ public class DeliveryHomeActivity extends AppCompatActivity {
         boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
 
         if (!isLoggedIn) {
-            // Si el usuario no está logueado, ir a la pantalla de inicio de sesión
-            Intent intent = new Intent(DeliveryHomeActivity.this, LoginActivity1.class);
+             Intent intent = new Intent(DeliveryHomeActivity.this, LoginActivity1.class);
             startActivity(intent);
             finish();
-            return; // Salir del método para no continuar con la inicialización
+            return;
         }
 
-        // Inicializar Firebase Database
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         listViewPedidos = findViewById(R.id.listViewPedidos);
         listaPedidos = new ArrayList<>();
         adapter = new PedidoAdapter(this, R.layout.item_pedido, listaPedidos);
         listViewPedidos.setAdapter(adapter);
 
-        // Cargar los pedidos no atendidos por defecto
-        cargarPedidosNoAtendidos();
+         cargarPedidosNoAtendidos();
 
-        // Configurar el botón de Cerrar Sesión
         Button btnCerrarSesion = findViewById(R.id.logoutButton);
         btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,8 +67,7 @@ public class DeliveryHomeActivity extends AppCompatActivity {
             }
         });
 
-        // Configurar el botón para mostrar el historial de pedidos atendidos
-        Button btnMostrarHistorial = findViewById(R.id.btnMostrarHistorial);
+         Button btnMostrarHistorial = findViewById(R.id.btnMostrarHistorial);
         btnMostrarHistorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,9 +109,8 @@ public class DeliveryHomeActivity extends AppCompatActivity {
 
     private void cerrarSesion() {
         // Cerrar sesión en Firebase Authentication
-        FirebaseAuth.getInstance().signOut();
+       // FirebaseAuth.getInstance().signOut();
 
-        // Limpiar SharedPreferences si es necesario
         SharedPreferences sharedPreferences = getSharedPreferences("userData", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
@@ -124,10 +118,9 @@ public class DeliveryHomeActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Sesión cerrada correctamente", Toast.LENGTH_SHORT).show();
 
-        // Redirigir a la pantalla de inicio de sesión
         Intent intent = new Intent(DeliveryHomeActivity.this, LoginActivity1.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-        finish(); // Finalizar esta actividad para evitar volver atrás con el botón de retroceso
+        finish();
     }
 }
